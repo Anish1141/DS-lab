@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+
+# Create dataset
+data = pd.DataFrame({
+    'marks': [85, 90, None, 45, 100, 120],
+    'study_hours': [2, 3, 4, None, 5, 10]
+})
+
+
+print("Original Data:", df)
+
+
+# Handle missing values
+df.fillna(df.mean(), inplace=True)
+
+print("\nAfter Handling Missing Values:", df)
+
+
+# Statistical summary
+print("\nStatistical Summary:")
+print(df.describe())
+
+# Log transformation
+df['marks_log'] = np.log(df['marks'])
+
+df['marks'] = np.where(df['marks'] > 100, df['marks'].mean(), df['marks'])
+
+print("\nFinal Data:")
+print(df)
