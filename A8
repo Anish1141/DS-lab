@@ -1,0 +1,16 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('titanic')
+
+print("First 5 rows:\n", df.head())
+print("\nFeature Types:\n", df.dtypes)
+
+sns.histplot(df['fare'], bins=20)
+
+plt.title("Fare Distribution (Titanic Dataset)")
+plt.xlabel("Fare")
+plt.ylabel("Frequency")
+
+plt.show()
