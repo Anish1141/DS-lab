@@ -1,0 +1,9 @@
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset('iris')
+
+print("Summary:\n", df.describe())
+
+grouped = df.groupby('species')['sepal_length'].describe()
+print("\nSpecies-wise:\n", grouped)
