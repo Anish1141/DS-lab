@@ -1,0 +1,29 @@
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+text = "Data Science is amazing and powerful. It is widely used in many applications."
+
+# Tokenization
+tokens = text.split()
+
+# Stopword removal
+filtered = [word for word in tokens if word.lower() not in stopwords.words('english')]
+print("After Stopword Removal:\n", filtered)
+
+# Stemming
+stemmer = PorterStemmer()
+stemmed = [stemmer.stem(word) for word in filtered]
+print("Stemmed Words:\n", stemmed)
+
+# Lemmatization
+lemmatizer = WordNetLemmatizer()
+lemmatized = [lemmatizer.lemmatize(word) for word in filtered]
+print("Lemmatized Words:\n", lemmatized)
+
+# TF-IDF
+vectorizer = TfidfVectorizer()
+tfidf = vectorizer.fit_transform([text])
+
+print("TF-IDF Matrix:\n", tfidf.toarray())
+print("Feature Names:\n", vectorizer.get_feature_names_out())
