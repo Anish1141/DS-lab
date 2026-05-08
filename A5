@@ -1,0 +1,58 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+df = pd.read_csv(r"Downloads\Social_Network_Ads.csv")
+df.head()
+
+df.isnull().sum()
+X = df[['Age', 'EstimatedSalary']]
+y = df['Purchased']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+sc = StandardScaler()
+
+X_train = sc.fit_transform(X_train)
+X_test - sc.transform(X_test)
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+
+TN = cm[0][0] 
+FP = cm[0][1]
+FN = cm[1][0]
+TP = cm[1][1]
+
+print("TN : ",TN)
+print("FP : ",FP)
+print("FN : ",FN)
+print("TP : ",TP)
+
+Accuracy = (TP+TN)/(TP+TN+FP+FN)
+error_rate = (FP+FN)/(TP+TN+FP+FN)
+precision = TP / (TP+FN)
+Recall = TP / (TP+FP)
+
+print("Accuracy : ",Accuracy)
+print("error_rate : ",error_rate)
+print("precision : ",precision)
+print("Recall : ",Recall)
+
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrics')
+plt.show()
