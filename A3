@@ -7,3 +7,28 @@ print("Summary:\n", df.describe())
 
 grouped = df.groupby('species')['sepal_length'].describe()
 print("\nSpecies-wise:\n", grouped)
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv(r"C:\Users\Hp\Downloads\data.csv")
+df.head()
+
+grouped = df.groupby('Pulse')['Maxpulse']
+summary = grouped.agg(['mean', 'median', 'min', 'max', 'std'])
+print(summary)
+calories_list = df.groupby('Pulse') ['Maxpulse'].apply(list)
+print(calories_list)
+
+df = pd.read_csv(r"C:\Users\Hp\OneDrive\Desktop\VS code\Iris11.csv")
+df.head()
+
+grouped = df.groupby('Species')
+summary = grouped[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']].agg(['mean', 'median', 'min', 'max', 'std'])
+print(summary)
+
+print("Mean :\n", grouped.mean())
+print("\nStandard Deviation :\n", grouped.std())
+print("\n Percentiles :\n", grouped.quantile([0.25, 0.50, 0.75]))
