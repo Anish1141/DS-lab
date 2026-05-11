@@ -16,3 +16,29 @@ plt.show()
 sns.boxplot(data=df)
 plt.title("Boxplot of Iris Features")
 plt.show()
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+###10
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv(r"C:\Users\Hp\OneDrive\Desktop\VS code\Iris11.csv")
+df.head()
+
+X= df.drop('Id', axis=1)
+X.hist(figsize=(10,6), bins=20)
+plt.suptitle('Histogram of iris features')
+plt.show()
+
+plt.figure(figsize=(10,6))
+
+for i, col in enumerate(X.columns[:-1]):
+    plt.subplot(2,2,i+1)
+    sns.boxplot(y=X[col])
+    plt.title(col)
+
+plt.show()
