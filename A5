@@ -1,3 +1,5 @@
+###5
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -8,10 +10,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
-df = pd.read_csv(r"Downloads\Social_Network_Ads.csv")
+df = pd.read_csv(r"C:\Users\Hp\OneDrive\Desktop\VS code\Social_Network_Ads.csv")
 df.head()
 
 df.isnull().sum()
+
 X = df[['Age', 'EstimatedSalary']]
 y = df['Purchased']
 
@@ -26,7 +29,6 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
-
 
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
