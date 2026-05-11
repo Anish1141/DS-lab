@@ -8,8 +8,9 @@ print("Summary:\n", df.describe())
 grouped = df.groupby('species')['sepal_length'].describe()
 print("\nSpecies-wise:\n", grouped)
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+###3
 import pandas as pd
 import numpy as np
 
