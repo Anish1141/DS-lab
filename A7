@@ -44,3 +44,64 @@ print("\nTF-IDF Matrix:\n")
 print(tfidf.toarray())
 print("\nFeature Names:\n")
 print(vectorizer.get_feature_names_out())
+
+xxxxxxxxxxxxxxxxxxxxxxxx
+This code performs basic Natural Language Processing (NLP) operations using NLTK and scikit-learn.
+
+Short Explanation for Practical Exam
+Import Libraries
+Imports NLP tools for tokenization, stemming, lemmatization, POS tagging, and TF-IDF.
+Download Resources
+nltk.download() downloads required datasets like stopwords, tokenizer models, and taggers.
+
+Sample Text
+
+text = "Data Science is amazing and powerful..."
+This is the sentence used for NLP processing.
+
+Tokenization
+
+tokens = word_tokenize(text)
+Splits sentence into individual words/tokens.
+
+POS Tagging
+
+pos_tag(tokens)
+Identifies grammar type of each word (noun, verb, adjective, etc.).
+
+Stopword Removal
+
+if word.lower() not in stopwords.words('english')
+Removes common words like is, and, in because they add less meaning.
+
+Stemming
+
+stemmer.stem(word)
+Converts words to root form.
+Example: applications → applic
+
+Lemmatization
+
+lemmatizer.lemmatize(word)
+Converts words into meaningful base form.
+Example: used → use
+
+TF-IDF
+
+TfidfVectorizer()
+Converts text into numerical values based on word importance.
+Frequently important words get higher scores.
+Final Output
+
+The program displays:
+
+Tokens
+POS tags
+Words after stopword removal
+Stemmed words
+Lemmatized words
+TF-IDF matrix and feature names
+One-Line Conclusion
+
+This program demonstrates major NLP preprocessing techniques such as tokenization, stopword removal, stemming, lemmatization, POS tagging, 
+and TF-IDF feature extraction.
