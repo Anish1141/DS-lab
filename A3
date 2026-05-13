@@ -54,3 +54,17 @@ Final Practical Exam Conclusion
 
 “This program loads the Iris dataset, displays sample records, calculates overall statistical summaries, and performs species-wise analysis using 
 Pandas groupby and describe functions.”
+Iris Dataset Analysis Using Pandas
+The Iris dataset is commonly used for data analysis and machine learning practice. 
+Using Pandas and Seaborn, the dataset is loaded and analyzed statistically. The describe() function provides overall statistical information,
+while groupby() helps analyze data species-wise. This process is called Exploratory Data Analysis (EDA), which helps understand 
+data patterns before building ML models.
+
+Exploratory Data Analysis (EDA)
+
+Process of understanding:
+Patterns
+Trends
+Distribution
+Relationships
+before machine learning.
