@@ -1,45 +1,62 @@
 import pandas as pd
 import seaborn as sns
+
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
+from sklearn.metrics import confusion_matrix
 
 # Load dataset
 df = sns.load_dataset('iris')
 
-print("First 5 rows:\n", df.head())
+print("First 5 Rows:\n")
+print(df.head())
 
-# Features & target
+# Convert into binary classification
+# setosa = 1, others = 0
+df['species'] = df['species'].apply(
+    lambda x: 1 if x == 'setosa' else 0
+)
+
+# Features and target
 X = df.drop('species', axis=1)
 y = df['species']
 
-# Split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-# Train
+# Train model
 model = GaussianNB()
 model.fit(X_train, y_train)
 
-# Predict
+# Prediction
 y_pred = model.predict(X_test)
 
-# Metrics
+# Confusion matrix
 cm = confusion_matrix(y_test, y_pred)
-print("Confusion Matrix:\n", cm)
 
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print("\nConfusion Matrix:\n")
+print(cm)
 
-precision = precision_score(y_test, y_pred, average='macro')
-recall = recall_score(y_test, y_pred, average='macro')
+# Extract values
+TN, FP, FN, TP = cm.ravel()
 
-print("Precision:", precision)
-print("Recall:", recall)
+print("\nTN =", TN)
+print("FP =", FP)
+print("FN =", FN)
+print("TP =", TP)
 
-# Error rate
-error_rate = 1 - accuracy
-print("Error Rate:", error_rate)
+# Metrics
+accuracy = (TP + TN) / cm.sum()
+error_rate = (FP + FN) / cm.sum()
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)
 
+print("\nAccuracy =", accuracy)
+print("Error Rate =", error_rate)
+print("Precision =", precision)
+print("Recall =", recall)
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ###6
