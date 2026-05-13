@@ -34,6 +34,52 @@ df['sex'] = df['sex'].map({
 
 print("\nAfter Encoding:\n")
 print(df.head())
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+This code performs basic data preprocessing and exploration on the Titanic dataset using Python.
 
+Step-by-step Explanation
+import pandas as pd
+import seaborn as sns
+from sklearn.preprocessing import MinMaxScaler
+Imports libraries:
+pandas → for handling tables/dataframes
+seaborn → for loading sample datasets
+MinMaxScaler → used for normalization (not used later in this code)
+df = sns.load_dataset('titanic')
+Loads the Titanic dataset into variable df.
+print(df.head())
+Displays the first 5 rows of the dataset.
+print(df.shape)
+Shows dataset dimensions:
+rows = number of records
+columns = number of features
+print(df.dtypes)
+Displays datatype of each column:
+int, float, object, etc.
+print(df.describe())
+Gives statistical summary of numerical columns:
+mean
+minimum
+maximum
+standard deviation
+quartiles
+print(df.isnull().sum())
+Checks missing values in each column.
+df['sex'] = df['sex'].map({
+    'male': 0,
+    'female': 1
+})
+Converts categorical data into numerical form:
+male → 0
+female → 1
+
+This process is called encoding.
+
+print(df.head())
+Displays updated dataset after encoding.
+Short Viva Answer
+
+“This program loads the Titanic dataset, performs data exploration like checking shape, datatypes, summary statistics, and missing values, 
+then converts categorical values in the sex column into numerical values using encoding.”
 
 
