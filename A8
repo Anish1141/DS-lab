@@ -53,3 +53,17 @@ Short Conclusion for Exam
 
 This program loads the Titanic dataset, displays basic dataset information, and visualizes the distribution of passenger fares using a histogram.
 
+Pandas (pd) → Used for handling and analyzing tabular data.
+Seaborn (sns) → Statistical visualization library built on Matplotlib.
+Matplotlib (plt) → Used for plotting graphs and charts.
+sns.load_dataset('titanic') → Loads the Titanic dataset from Seaborn.
+df.head() → Displays the first 5 rows of the dataset.
+df.dtypes → Shows data types of all columns.
+Histogram → Graph used to display frequency distribution of numerical data.
+sns.histplot() → Creates histogram for data visualization.
+df['fare'] → Selects the Fare column from dataset.
+bins=20 → Divides fare values into 20 intervals/groups.
+plt.title() → Adds title to graph.
+plt.xlabel() → Labels X-axis.
+plt.ylabel() → Labels Y-axis.
+plt.show() → Displays the final graph.
