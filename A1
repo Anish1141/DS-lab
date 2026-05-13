@@ -1,20 +1,39 @@
 import pandas as pd
 import seaborn as sns
 
+from sklearn.preprocessing import MinMaxScaler
+
+# Load dataset
 df = sns.load_dataset('titanic')
 
+# Display first 5 rows
+print("First 5 Rows:\n")
 print(df.head())
 
+# Dataset dimensions
+print("\nDataset Shape:\n")
+print(df.shape)
+
+# Data types
+print("\nData Types:\n")
 print(df.dtypes)
 
-print(df.describe)
+# Statistical summary
+print("\nSummary Statistics:\n")
+print(df.describe())
 
+# Missing values
+print("\nMissing Values:\n")
 print(df.isnull().sum())
 
-#Converts catogorical to numerical
-df['sex'] = df['sex'].map({'male': 0, 'female' : 1})
+# Convert categorical to numerical
+df['sex'] = df['sex'].map({
+    'male': 0,
+    'female': 1
+})
 
-
+print("\nAfter Encoding:\n")
 print(df.head())
+
 
 
