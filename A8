@@ -16,5 +16,39 @@ plt.ylabel("Frequency")
 plt.show()
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+This code performs data visualization on the Titanic dataset using Python libraries.
 
+Step-by-step Explanation
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+Imports libraries:
+pandas → for handling datasets
+seaborn → for loading dataset and visualization
+matplotlib.pyplot → for plotting graphs
+df = sns.load_dataset('titanic')
+Loads the Titanic dataset into a DataFrame named df.
+print("First 5 rows:\n", df.head())
+Displays the first 5 rows of the dataset.
+print("\nFeature Types:\n", df.dtypes)
+Shows data types of all columns like:
+int
+float
+object
+bool
+sns.histplot(df['fare'], bins=20)
+Creates a histogram of the fare column.
+bins=20 divides the fare values into 20 groups.
+plt.title("Fare Distribution (Titanic Dataset)")
+plt.xlabel("Fare")
+plt.ylabel("Frequency")
+Adds:
+Graph title
+X-axis label (Fare)
+Y-axis label (Frequency)
+plt.show()
+Displays the graph.
+Short Conclusion for Exam
+
+This program loads the Titanic dataset, displays basic dataset information, and visualizes the distribution of passenger fares using a histogram.
 
