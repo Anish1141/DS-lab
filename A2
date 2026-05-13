@@ -49,6 +49,3 @@ print("\nSummary:\n", df.describe().round(2))
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
