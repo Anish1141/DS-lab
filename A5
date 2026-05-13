@@ -59,3 +59,80 @@ plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("Confusion Matrix")
 plt.show()
+xxxxxxxxxxxxxxxxx
+This program uses Logistic Regression to predict whether a person will purchase a product based on their Age and Estimated Salary.
+
+Short Explanation of Code
+1. Import Libraries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+pandas → used to load and handle dataset
+seaborn & matplotlib → used for visualization
+sklearn → used for machine learning
+2. Load Dataset
+df = pd.read_csv(...)
+
+Reads the Social_Network_Ads.csv dataset into a dataframe.
+
+3. Select Features and Target
+X = df[['Age', 'EstimatedSalary']]
+y = df['Purchased']
+X = input features (Age, Salary)
+y = output/target column (Purchased → 0 or 1)
+4. Split Dataset
+train_test_split(...)
+
+Dataset is divided into:
+
+80% Training data
+20% Testing data
+
+Training data is used to train model, testing data checks performance.
+
+5. Feature Scaling
+StandardScaler()
+
+Standardizes data so values are on similar scale.
+This improves Logistic Regression performance.
+
+6. Train Logistic Regression Model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+Creates and trains the Logistic Regression model using training data.
+
+7. Prediction
+y_pred = model.predict(X_test)
+
+Predicts whether users will purchase or not on test data.
+
+8. Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+Used to evaluate classification performance.
+
+Matrix contains:
+
+TN → Correctly predicted No
+TP → Correctly predicted Yes
+FP → Wrongly predicted Yes
+FN → Wrongly predicted No
+9. Performance Metrics
+accuracy
+precision
+recall
+error_rate
+Accuracy → overall correct predictions
+Error Rate → overall wrong predictions
+Precision → how many predicted positives are correct
+Recall → how many actual positives are detected
+10. Heatmap Visualization
+sns.heatmap(...)
+
+Displays confusion matrix visually using colors.
+
+One-Line Viva Summary
+
+“This code trains a Logistic Regression model on social network advertisement data to predict purchases and evaluates the model using a confusion matrix, 
+accuracy, precision, and recall.”
