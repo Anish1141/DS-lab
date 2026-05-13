@@ -85,4 +85,10 @@ Conclusion
 
 This code is used to analyze and visualize the Iris dataset using histograms and boxplots to understand data distribution and detect outliers.
 
-
+EDA → Process of analyzing and understanding data.
+Histogram → Shows data distribution.
+Boxplot → Detects spread and outliers.
+DataFrame → Table-like data structure in Pandas.
+Feature Types → Datatypes of columns.
+Outlier → Value far from normal range.
+IQR → Q3 − Q1, used for outlier detection.
