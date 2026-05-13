@@ -28,6 +28,60 @@ plt.title("Boxplot of Iris Features")
 plt.show()
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+This program performs data visualization and analysis on the Iris dataset using Pandas, Seaborn, and Matplotlib.
 
+Short Explanation for Practical Exam:
+Import Libraries
+pandas → used for data handling.
+seaborn → provides the Iris dataset and visualization tools.
+matplotlib.pyplot → used to display graphs.
+
+Load Dataset
+
+df = sns.load_dataset('iris')
+
+Loads the famous Iris flower dataset into a DataFrame.
+
+Display First 5 Rows
+
+print(df.head())
+
+Shows the first 5 records of the dataset.
+
+Check Feature Types
+
+print(df.dtypes)
+
+Displays the data types of each column.
+
+Plot Histograms
+
+df.hist(figsize=(8,6))
+
+Creates histograms for all numeric features to show data distribution.
+
+Add Title and Show Graph
+
+plt.suptitle("Histograms of Iris Dataset")
+plt.show()
+
+Adds a title and displays the histograms.
+
+Create Boxplot
+
+sns.boxplot(data=df.drop('species', axis=1))
+
+Draws boxplots for numeric features to detect outliers.
+
+Display Boxplot
+
+plt.title("Boxplot of Iris Features")
+plt.show()
+
+Adds title and displays the boxplot.
+
+Conclusion
+
+This code is used to analyze and visualize the Iris dataset using histograms and boxplots to understand data distribution and detect outliers.
 
 
