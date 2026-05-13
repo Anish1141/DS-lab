@@ -3,7 +3,6 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Download required resources
@@ -11,50 +10,35 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
-
 # Sample text
 text = "Data Science is amazing and powerful. It is widely used in many applications."
-
 # Tokenization
 tokens = word_tokenize(text)
 print("Tokens:\n", tokens)
-
 # POS Tagging
 pos = pos_tag(tokens)
 print("\nPOS Tags:\n", pos)
-
 # Stopword Removal
 filtered = [
     word for word in tokens
     if word.lower() not in stopwords.words('english')
 ]
-
 print("\nAfter Stopword Removal:\n", filtered)
-
 # Stemming
 stemmer = PorterStemmer()
-
 stemmed = [stemmer.stem(word) for word in filtered]
-
 print("\nStemmed Words:\n", stemmed)
-
 # Lemmatization
 lemmatizer = WordNetLemmatizer()
-
 lemmatized = [
     lemmatizer.lemmatize(word)
     for word in filtered
 ]
-
 print("\nLemmatized Words:\n", lemmatized)
-
 # TF-IDF
 vectorizer = TfidfVectorizer()
-
 tfidf = vectorizer.fit_transform([text])
-
 print("\nTF-IDF Matrix:\n")
 print(tfidf.toarray())
-
 print("\nFeature Names:\n")
 print(vectorizer.get_feature_names_out())
