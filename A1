@@ -17,16 +17,4 @@ df['sex'] = df['sex'].map({'male': 0, 'female' : 1})
 
 print(df.head())
 
-###1
-import pandas as pd
-import numpy as np
 
-df = pd.read_csv(r"C:\Users\Hp\Downloads\archive (2)\Chocolate Sales.csv")
-df.head()
-df.isnull().sum()
-df.describe()
-df.shape
-df.dtypes
-df['Amount']=df['Amount'].replace('[\$,]','',regex=True).astype(float)
-df.dtypes
-df.head()
