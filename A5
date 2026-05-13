@@ -1,7 +1,6 @@
 ###5
 
 import pandas as pd
-import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -10,51 +9,57 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
-df = pd.read_csv(r"C:\Users\Hp\OneDrive\Desktop\VS code\Social_Network_Ads.csv")
-df.head()
+# Load dataset
+df = pd.read_csv(r"C:\Users\anish\Downloads\Social_Network_Ads.csv")
 
-df.isnull().sum()
-
+# Features and target
 X = df[['Age', 'EstimatedSalary']]
 y = df['Purchased']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
+# Scaling
 sc = StandardScaler()
-
 X_train = sc.fit_transform(X_train)
-X_test - sc.transform(X_test)
+X_test = sc.transform(X_test)
 
+# Train model
 model = LogisticRegression()
 model.fit(X_train, y_train)
 
+# Prediction
 y_pred = model.predict(X_test)
 
+# Confusion matrix
 cm = confusion_matrix(y_test, y_pred)
-print(cm)
 
-TN = cm[0][0] 
-FP = cm[0][1]
-FN = cm[1][0]
-TP = cm[1][1]
+TN, FP, FN, TP = cm.ravel()
 
-print("TN : ",TN)
-print("FP : ",FP)
-print("FN : ",FN)
-print("TP : ",TP)
+# Metrics
+accuracy = (TP + TN) / cm.sum()
+error_rate = (FP + FN) / cm.sum()
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)
 
-Accuracy = (TP+TN)/(TP+TN+FP+FN)
-error_rate = (FP+FN)/(TP+TN+FP+FN)
-precision = TP / (TP+FN)
-Recall = TP / (TP+FP)
+# Output
+print("Confusion Matrix:\n", cm)
 
-print("Accuracy : ",Accuracy)
-print("error_rate : ",error_rate)
-print("precision : ",precision)
-print("Recall : ",Recall)
+print("\nTN =", TN)
+print("FP =", FP)
+print("FN =", FN)
+print("TP =", TP)
 
+print("\nAccuracy =", accuracy)
+print("Error Rate =", error_rate)
+print("Precision =", precision)
+print("Recall =", recall)
+
+# Heatmap
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-plt.xlabel('Predicted')
-plt.ylabel('Actual')
-plt.title('Confusion Matrics')
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
 plt.show()
