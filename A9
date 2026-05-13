@@ -12,3 +12,33 @@ plt.xlabel('Gender')
 plt.ylabel('Age')
 plt.title('Age distribution by Gender and survived')
 plt.show()
+xxxxxxxxxxxxxxx
+This code is used for data visualization on the Titanic dataset using Seaborn and Matplotlib.
+
+Short Explanation for Practical Exam
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Imports required libraries:
+pandas → for data handling
+matplotlib.pyplot → for plotting graphs
+seaborn → for advanced visualization
+df = sns.load_dataset("titanic")
+Loads the built-in Titanic dataset into a DataFrame named df.
+df.head()
+Displays the first 5 rows of the dataset.
+sns.boxplot(x='sex', y='age', hue='survived', data=df)
+Creates a boxplot:
+x='sex' → separates data by gender
+y='age' → shows age distribution
+hue='survived' → compares survived and non-survived passengers using different colors
+Helps analyze how age and survival vary between males and females.
+plt.xlabel('Gender')
+plt.ylabel('Age')
+plt.title('Age distribution by Gender and survived')
+Adds labels and title to the graph.
+plt.show()
+Displays the final plot.
+Conclusion
+
+This program visualizes the age distribution of Titanic passengers based on gender and survival status using a boxplot.
