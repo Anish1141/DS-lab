@@ -177,4 +177,23 @@ Final Short Conclusion (For Exam)
 
 “This program performs binary classification on the Iris dataset using the Gaussian Naive Bayes algorithm. It trains the model, predicts test data, 
 generates a confusion matrix, and calculates accuracy, error rate, precision, and recall to evaluate performance.”
-
+aive Bayes → Probability-based classifier
+GaussianNB → For continuous numerical data
+Iris Dataset → Flower measurement dataset
+Binary Classification → Two output classes
+X → Input features
+y → Target variable
+Train Data → Used for learning
+Test Data → Used for testing
+model.fit() → Trains model
+model.predict() → Predicts output
+Confusion Matrix → Performance evaluation table
+TP → Correct Positive
+TN → Correct Negative
+FP → Wrong Positive
+FN → Wrong Negative
+Accuracy → Overall correctness
+Precision → Correct positive predictions
+Recall → Actual positives identified
+Advantage → Fast and simple
+Disadvantage → Assumes feature independence
