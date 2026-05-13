@@ -106,3 +106,13 @@ One-Line Conclusion
 
 This program demonstrates major NLP preprocessing techniques such as tokenization, stopword removal, stemming, lemmatization, POS tagging, 
 and TF-IDF feature extraction.
+Tokenization: Splits text into words or tokens.
+POS Tagging: Identifies grammatical role of words.
+Stopword Removal: Removes common unnecessary words.
+Stemming: Reduces words to root form using chopping.
+Lemmatization: Converts words into meaningful base words.
+TF-IDF: Measures importance of words in a document.
+NLTK: Python library used for NLP tasks.
+TfidfVectorizer: Converts text into numerical vectors.
+WordNetLemmatizer: Used for lemmatization process.
+PorterStemmer: Used for stemming words.
