@@ -121,7 +121,25 @@ Predicts flower class for test data.
 cm = confusion_matrix(y_test, y_pred)
 
 Used to evaluate classification performance.
-
+Matrix contains:
+True Positive (TP)
+Model predicted Positive, and it is actually Positive
+Example:
+Patient has disease → model says disease present.
+2. True Negative (TN)
+Model predicted Negative, and it is actually Negative.
+Example:
+Patient healthy → model says healthy.
+3. False Positive (FP)
+Model predicted Positive, but actually Negative.
+Example:
+Healthy patient → model wrongly says disease present.
+Also called Type I Error.
+4. False Negative (FN)
+Model predicted Negative, but actually Positive.
+Example:
+Patient has disease → model wrongly says healthy.
+Also called Type II Error.
 Matrix contains:
 
 Value	Meaning
