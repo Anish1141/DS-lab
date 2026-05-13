@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 # Load dataset from local CSV
 df = pd.read_csv("titanic.csv")
-
+#sns.load_dataset('titanic')
 # Display first 5 rows
 print("First 5 Rows:\n")
 print(df.head())
