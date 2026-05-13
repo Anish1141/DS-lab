@@ -1,5 +1,55 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+
+# Dataset
+df = pd.DataFrame({
+    'marks':       [85, 90, None, 45, 100, 120],
+    'study_hours': [2,  3,  4,   None, 5,  10]
+})
+print("Original:\n", df)
+
+# ── STEP 1 : Missing Values & Inconsistencies ──────────────
+print("\nMissing Values:\n", df.isnull().sum())
+
+# Fix inconsistency first (marks can't be > 100)
+df['marks'] = np.where(df['marks'] > 100, df['marks'].median(), df['marks'])
+
+# Fill missing with mean
+df.fillna(df.mean(numeric_only=True), inplace=True)
+print("\nAfter Cleaning:\n", df)
+
+# ── STEP 2 : Outlier Detection & Treatment (IQR) ───────────
+for col in ['marks', 'study_hours']:
+    Q1, Q3 = df[col].quantile(0.25), df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower, upper = Q1 - 1.5*IQR, Q3 + 1.5*IQR
+    print(f"\n{col} → Outliers:", df[(df[col]<lower)|(df[col]>upper)][col].values)
+    df[col] = np.clip(df[col], lower, upper)   # Capping
+
+# Boxplot
+df[['marks','study_hours']].boxplot()
+plt.title("Boxplot After Outlier Treatment")
+plt.show()
+
+# ── STEP 3 : Log Transformation on marks ───────────────────
+# Reason: reduces right skewness, makes distribution normal
+print(f"\nSkewness Before: {df['marks'].skew():.3f}")
+df['marks_log'] = np.log(df['marks'] + 1)
+print(f"Skewness After : {df['marks_log'].skew():.3f}")
+
+# Histogram before vs after
+fig, ax = plt.subplots(1, 2, figsize=(8,3))
+ax[0].hist(df['marks'],     color='salmon',    edgecolor='black'); ax[0].set_title("Before")
+ax[1].hist(df['marks_log'], color='steelblue', edgecolor='black'); ax[1].set_title("After Log")
+plt.tight_layout(); plt.show()
+
+print("\nFinal Data:\n", df)
+print("\nSummary:\n", df.describe().round(2))
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+import numpy as np
+import pandas as pd
 
 # Create dataset
 data = pd.DataFrame({
