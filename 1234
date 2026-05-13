@@ -1,0 +1,287 @@
+
+# ============================================================
+# PRACTICAL NO 1 : DATA WRANGLING - I
+# ============================================================
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("Titanic-Dataset.csv")
+df.head()
+
+df.info()
+
+df.isnull().sum()
+
+df.describe()
+
+print("shape of dataset: ",df.shape)
+print("column names:",df.columns)
+
+print(df.dtypes)
+
+df['Age'] = df['Age'].fillna(df['Age'].mean())
+
+df.isnull().sum()
+
+df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])
+
+df[df['Embarked'].isna()]
+
+df.isnull().sum()
+
+df[df['Cabin'].isna()]
+
+df['Cabin'] = df['Cabin'].fillna("UNKNOWN")
+
+df[df['Cabin'] == 'UNKNOWN']
+
+df.dtypes
+
+df['Survived'] = df['Survived'].astype("category")
+df['Pclass'] = df['Pclass'].astype("category")
+
+df.dtypes
+
+df
+
+df_encoded = pd.get_dummies(df, columns=['Survived', 'Pclass'])
+print(df_encoded)
+df_encoded
+
+
+# ============================================================
+# PRACTICAL NO 2 : DATA WRANGLING - II
+# ============================================================
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = {
+    'Student_ID' : [1,2,3,4,5,6,7,8,9,10],
+    'Name' : ["Arjun","Amit","Priya","Rahul","Sneha","Vikas","Om","Onkar","Purvesh","Abrar"],
+    'Gender' : ["Male","Male","Female","Male","Female","Male","Male","Male","Male","Male"],
+    'Maths_Marks' : [85, 90, np.nan, 95, 40,88, 76, 500, 65, 72],
+    'Science_Marks': [78, 85, 80, np.nan, 35,92, 74, 89, 66, 70],
+    'Attendance': [90, 95, 85, 88, 40,92, 86, 91, np.nan, 84]
+}
+
+df = pd.DataFrame(data)
+df
+
+# Missing values
+
+print(df.isnull().sum())
+
+# Fill missing values with mean
+
+df['Maths_Marks'] = df['Maths_Marks'].fillna(df['Maths_Marks'].mean())
+
+df['Science_Marks'] = df['Science_Marks'].fillna(df['Science_Marks'].mean())
+
+df['Attendance'] = df['Attendance'].fillna(df['Attendance'].mean())
+
+df
+
+print(df[df['Maths_Marks'] > 100])
+
+median_marks = df['Maths_Marks'].median()
+
+df.loc[df['Maths_Marks'] > 100, 'Maths_Marks'] = median_marks
+
+print(df)
+
+# detect Outliers
+
+plt.boxplot(df['Maths_Marks'])
+plt.title("boxplot of maths marks")
+plt.show()
+
+# Detect Outliers using IQR Method
+# Calculate Q1 and Q3
+
+Q1 = df['Maths_Marks'].quantile(0.25)
+Q3 = df['Maths_Marks'].quantile(0.75)
+
+IQR = Q3 - Q1
+
+lower_limit = Q1 - 1.5 * IQR
+upper_limit = Q3 + 1.5 * IQR
+
+# Detect outliers
+
+outliers = df[(df['Maths_Marks'] < lower_limit) |
+              (df['Maths_Marks'] > upper_limit)]
+
+print(outliers)
+
+# handle outliers
+# Replace outliers with upper limit
+
+df['Maths_Marks'] = np.where(
+    df['Maths_Marks'] > upper_limit,
+    upper_limit,
+    df['Maths_Marks']
+)
+
+print(df)
+
+# apply data transformation
+# Apply log transformation
+
+df['Log_Maths_Marks'] = np.log(df['Maths_Marks'] + 1)
+
+print(df[['Maths_Marks', 'Log_Maths_Marks']])
+
+# Histogram before transformation
+
+plt.hist(df['Maths_Marks'])
+plt.title("Before Transformation")
+plt.xlabel("Maths Marks")
+plt.ylabel("Frequency")
+plt.show()
+
+# Histogram after transformation
+
+plt.hist(df['Log_Maths_Marks'])
+plt.title("After Log Transformation")
+plt.xlabel("Log Maths Marks")
+plt.ylabel("Frequency")
+plt.show()
+
+
+# ============================================================
+# PRACTICAL NO 3 : DESCRIPTIVE STATISTICS
+# ============================================================
+
+import pandas as pd 
+
+df = pd.read_csv("iris.csv")
+df.head()
+
+df.tail()
+
+# display dataset info
+
+print(df.info())
+
+# shape of dataset
+print("Shape:", df.shape)
+
+print(df['species'].unique())
+
+# group data by species
+grouped_data = df.groupby('species')
+
+# mean of each species
+print("\n Mean values:")
+print(grouped_data.mean())
+
+# median of each species
+print("\n Median values:")
+print(grouped_data.median())
+
+# minimum values
+print("\n Minimum values")
+print(grouped_data.min())
+
+# maximum values
+print("\n Maximum values")
+print(grouped_data.max())
+
+# standard deviation
+print("\n Standard Deviation")
+print(grouped_data.std())
+
+print(df.groupby('species').describe())
+
+# Percentiles
+
+print(df.groupby('species').describe())
+
+# encoding categorical values
+df['species_label'] = df['species'].map({
+    'setosa': 0,
+    'versicolor':1,
+    'virginica':2
+})
+
+df
+
+# complete statistical summary
+df.describe()
+
+
+# ============================================================
+# PRACTICAL NO 4 : LINEAR REGRESSION
+# ============================================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error,r2_score
+
+bh = pd.read_csv("BostonHousing.csv")
+bh.head()
+
+bh.columns
+
+bh.shape
+
+bh.info()
+
+bh.describe()
+
+bh.isnull().sum()
+
+# Fill missing values with column mean
+
+bh = bh.fillna(bh.mean(numeric_only=True))
+
+# Check again
+
+print(bh.isnull().sum())
+
+# Define Features and Target Variable
+
+X = bh.drop('medv', axis=1)
+y = bh['medv']
+
+# train test split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+print("Training Data shape:", X_train.shape)
+print("Testing Data shape:", X_test.shape)
+
+X_train.head()
+
+# linear regrssion equation
+# y = mx + c
+# Create model
+
+model = LinearRegression()
+
+# Train model
+
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print(y_pred[:10])
+
+# Calculate MSE
+
+mse = mean_squared_error(y_test, y_pred)
+
+# Calculate R2 Score
+
+r2 = r2_score(y_test, y_pred)
+
+print("Mean Squared Error:", mse)
+print("R2 Score:", r2)
