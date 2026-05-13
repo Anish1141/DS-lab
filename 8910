@@ -1,0 +1,76 @@
+
+# ============================================================
+# PRACTICAL NO 8 : DATA VISUALIZATION - I
+# ============================================================
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('titanic')
+
+print("First 5 rows:\n", df.head())
+
+print("\nFeature Types:\n", df.dtypes)
+
+sns.histplot(df['fare'], bins=20)
+
+plt.title("Fare Distribution (Titanic Dataset)")
+plt.xlabel("Fare")
+plt.ylabel("Frequency")
+
+plt.show()
+
+
+# ============================================================
+# PRACTICAL NO 9 : DATA VISUALIZATION - II
+# ============================================================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = sns.load_dataset("titanic")
+df.head()
+
+sns.boxplot(x='sex', y='age', hue='survived', data=df)
+
+plt.xlabel('Gender')
+plt.ylabel('Age')
+plt.title('Age distribution by Gender and survived')
+
+plt.show()
+
+
+# ============================================================
+# PRACTICAL NO 10 : DATA VISUALIZATION - III
+# ============================================================
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = sns.load_dataset('iris')
+
+# Display rows
+print("First 5 rows:\n")
+print(df.head())
+
+# Feature types
+print("\nFeature Types:\n")
+print(df.dtypes)
+
+# Histograms
+df.hist(figsize=(8,6))
+
+plt.suptitle("Histograms of Iris Dataset")
+
+plt.show()
+
+# Boxplot
+sns.boxplot(data=df)
+
+plt.title("Boxplot of Iris Dataset")
+
+plt.show()
