@@ -47,5 +47,84 @@ plt.tight_layout(); plt.show()
 print("\nFinal Data:\n", df)
 print("\nSummary:\n", df.describe().round(2))
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Here’s a short and simple explanation you can say in your practical exam:
+
+Code Explanation (Short)
+1. Import Libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+NumPy → numerical operations
+Pandas → handling dataset
+Matplotlib → plotting graphs
+2. Create Dataset
+df = pd.DataFrame({...})
+
+A dataset is created with:
+
+marks
+study_hours
+
+Some values are missing (None) and one mark is invalid (120).
+
+3. Check Missing Values
+df.isnull().sum()
+
+Counts missing values in each column.
+
+4. Handle Inconsistency
+df['marks'] = np.where(df['marks'] > 100, ...)
+
+Marks cannot be greater than 100.
+So value 120 is replaced with the median.
+
+5. Fill Missing Values
+df.fillna(df.mean(), inplace=True)
+
+Missing values are replaced with the mean of the column.
+
+6. Detect Outliers using IQR
+Q1, Q3 = ...
+IQR = Q3 - Q1
+Q1 = 25th percentile
+Q3 = 75th percentile
+IQR = range between Q1 and Q3
+
+Values outside the range are considered outliers.
+
+7. Treat Outliers
+np.clip()
+
+Outliers are capped within lower and upper limits.
+
+8. Boxplot
+boxplot()
+
+Displays outliers graphically after treatment.
+
+9. Log Transformation
+np.log(df['marks'] + 1)
+
+Log transformation reduces skewness and makes data more normally distributed.
+
+10. Histogram
+hist()
+
+Shows distribution:
+
+Before transformation
+After transformation
+11. Final Output
+df.describe()
+
+Displays statistical summary like:
+
+mean
+min
+max
+standard deviation
+One-Line Conclusion
+
+“This program performs data cleaning, missing value handling, outlier detection using IQR, outlier treatment, and log transformation for better data analysis.”
 
 
