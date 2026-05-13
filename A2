@@ -126,5 +126,15 @@ standard deviation
 One-Line Conclusion
 
 “This program performs data cleaning, missing value handling, outlier detection using IQR, outlier treatment, and log transformation for better data analysis.”
+This program performs complete data preprocessing:
+
+Detects missing values
+Fixes inconsistent data
+Handles outliers using IQR
+Visualizes data using boxplot and histogram
+Applies log transformation to reduce skewness
+Generates cleaned dataset summary
+
+These preprocessing steps improve data quality and prepare the dataset for machine learning or statistical analysis.
 
 
