@@ -1,0 +1,36 @@
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+
+df = pd.read_csv(r"C:\Users\anish\Downloads\archive\tweets\data_science.csv", low_memory=False)
+
+x = df['tweet'].astype(str)#Converts all tweets to string
+
+df['sentiment'] = x.str.lower().apply(
+    lambda x: 1 if any(word in x for word in ['good', 'great', 'happy', 'excellent', 'superb']) else 0#if tweet has good word->1 else 0, rule based labeling
+)
+
+y = df['sentiment']
+
+cv = CountVectorizer()#text to numbers
+x  = cv.fit_transform(x)
+
+x_train, x_test, y_train,y_test = train_test_split(x, y, test_size=0.5, random_state=42)
+
+model = MultinomialNB()#classification by assumning words are independent of each other
+model.fit(x_train, y_train)
+
+y_pred  = model.predict(x_test)#model predicts only using input(x_test)
+
+print("Accuracy: ", accuracy_score(y_test, y_pred))
+
+cm = confusion_matrix(y_test, y_pred)
+sns.heatmap(cm, annot=True, fmt='d', cmap = 'Blues')
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
