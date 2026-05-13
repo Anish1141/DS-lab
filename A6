@@ -1,13 +1,11 @@
 import pandas as pd
 import seaborn as sns
-
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import confusion_matrix
 
 # Load dataset
 df = sns.load_dataset('iris')
-
 print("First 5 Rows:\n")
 print(df.head())
 
@@ -35,13 +33,11 @@ y_pred = model.predict(X_test)
 
 # Confusion matrix
 cm = confusion_matrix(y_test, y_pred)
-
 print("\nConfusion Matrix:\n")
 print(cm)
 
 # Extract values
 TN, FP, FN, TP = cm.ravel()
-
 print("\nTN =", TN)
 print("FP =", FP)
 print("FN =", FN)
