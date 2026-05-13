@@ -82,4 +82,24 @@ Short Viva Answer
 “This program loads the Titanic dataset, performs data exploration like checking shape, datatypes, summary statistics, and missing values, 
 then converts categorical values in the sex column into numerical values using encoding.”
 
+Data Wrangling is the process of cleaning, transforming, and organizing raw data into a useful format for analysis and machine learning. It is an important step in Data Science and Machine Learning.
 
+Using pandas in Python, data wrangling includes:
+Loading dataset using read_csv()
+Checking missing values using isnull()
+Viewing statistics using describe()
+Checking data types using dtypes
+Converting categorical data into numerical form
+Normalizing numerical data
+
+The main goal of data wrangling is to improve data quality and make the dataset suitable for analysis and machine learning algorithms.
+
+Example:
+Converting male/female into 0/1
+Filling or removing missing values
+Scaling data between 0 and 1
+
+Data wrangling helps:
+Improve model accuracy
+Reduce errors
+Make data easier to analyze
