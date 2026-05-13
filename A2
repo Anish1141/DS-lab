@@ -30,47 +30,4 @@ print("\nFinal Data:")
 print(df)
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-###2
-import pandas as pd
-import numpy as np
 
-data = {
-    "ID": [1, 2, 3, 4, 5],
-    "Student": ["Pranav", "Sangram", "Karan", "Avish", "Tanmay"],
-    "Math_Score": [99, 97, 95, np.nan, 99],
-    "Science_Score": [65, 97, 96, 75, np.nan],
-    "Attendence": [76, 87, 90, np.nan, 80]
-}
-
-df = pd.DataFrame(data)
-
-print(df)
-df.describe()
-df.isnull().sum()
-df.dtypes
-df.info()
-df['Math_Score'] = df['Math_Score'].clip(0,100)
-df['Attendence'] = df['Attendence'].clip(0,100)
-
-df.fillna(df.mean(numeric_only=True), inplace=True)
-print(df)
-def handle_outliers(df, column):
-    Q1 = df[column].quantile(0.25)
-    Q3 = df[column].quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bount = Q1 - 1.5 * IQR
-    upper_bount = Q3 + 1.5 * IQR
-
-    df[column] = df[column].apply(
-        lambda x : lower_bount if x < lower_bount
-        else(upper_bount if x > upper_bount else x)
-    )
-
-    return df
-
-for col in ["Math_Score", "Science_Score", "Attendence"]:
-    df = handle_outliers(df, col)
-
-print(df)
-df["Math_score_log"] = np.log(df["Math_Score"])
-print(df)
