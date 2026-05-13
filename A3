@@ -19,3 +19,38 @@ print("\nSpecies-wise Summary Statistics:\n")
 grouped = df.groupby('species').describe()
 
 print(grouped)
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+This code uses Pandas and Seaborn to analyze the Iris dataset and generate summary statistics.
+
+Code Explanation (Short & Easy)
+import pandas as pd
+import seaborn as sns
+Imports libraries:
+pandas → used for data handling and tables.
+seaborn → provides built-in datasets like Iris.
+df = sns.load_dataset('iris')
+Loads the famous Iris flower dataset into a DataFrame named df.
+print(df.head())
+Displays the first 5 rows of the dataset.
+Helps us quickly inspect the data.
+print(df.describe())
+Generates overall summary statistics for numerical columns.
+Shows:
+count
+mean
+standard deviation
+minimum value
+maximum value
+quartiles (25%, 50%, 75%)
+grouped = df.groupby('species').describe()
+Groups the data based on flower species:
+setosa
+versicolor
+virginica
+Then calculates statistics separately for each species.
+print(grouped)
+Prints the species-wise statistical summary.
+Final Practical Exam Conclusion
+
+“This program loads the Iris dataset, displays sample records, calculates overall statistical summaries, and performs species-wise analysis using 
+Pandas groupby and describe functions.”
