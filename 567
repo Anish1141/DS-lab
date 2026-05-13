@@ -1,0 +1,166 @@
+
+# ============================================================
+# PRACTICAL NO 5 : LOGISTIC REGRESSION
+# ============================================================
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+# Load dataset
+df = pd.read_csv(r"C:\Users\anish\Downloads\Social_Network_Ads.csv")
+
+print("First 5 Rows:\n")
+print(df.head())
+
+# Features and Target
+X = df[['Age', 'EstimatedSalary']]
+y = df['Purchased']
+
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.25, random_state=0
+)
+
+# Feature Scaling
+sc = StandardScaler()
+
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
+# Logistic Regression Model
+classifier = LogisticRegression(random_state=0)
+
+classifier.fit(X_train, y_train)
+
+# Predictions
+y_pred = classifier.predict(X_test)
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+print("\nConfusion Matrix:\n")
+print(cm)
+
+
+# ============================================================
+# PRACTICAL NO 6 : NAIVE BAYES
+# ============================================================
+
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix
+
+# Load dataset
+df = sns.load_dataset('iris')
+
+print("First 5 Rows:\n")
+print(df.head())
+
+# Convert into binary classification
+# setosa = 1, others = 0
+
+df['species'] = df['species'].apply(
+    lambda x: 1 if x == 'setosa' else 0
+)
+
+# Features and target
+X = df.drop('species', axis=1)
+y = df['species']
+
+# Train test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Naive Bayes model
+model = GaussianNB()
+
+# Train model
+model.fit(X_train, y_train)
+
+# Prediction
+y_pred = model.predict(X_test)
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+print("\nConfusion Matrix:\n")
+print(cm)
+
+
+# ============================================================
+# PRACTICAL NO 7 : TEXT ANALYTICS USING TF-IDF
+# ============================================================
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Download required resources
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+
+text = "Natural Language Processing makes text analysis easy."
+
+# Tokenization
+tokens = word_tokenize(text)
+
+print("Tokens:\n", tokens)
+
+# Stopword Removal
+stop_words = set(stopwords.words('english'))
+
+filtered_words = [
+    word for word in tokens
+    if word.lower() not in stop_words
+]
+
+print("\nAfter Stopword Removal:\n", filtered_words)
+
+# Stemming
+ps = PorterStemmer()
+
+stemmed_words = [ps.stem(word) for word in filtered_words]
+
+print("\nStemmed Words:\n", stemmed_words)
+
+# Lemmatization
+lemmatizer = WordNetLemmatizer()
+
+lemmatized_words = [
+    lemmatizer.lemmatize(word)
+    for word in filtered_words
+]
+
+print("\nLemmatized Words:\n", lemmatized_words)
+
+# POS Tagging
+pos_tags = pos_tag(filtered_words)
+
+print("\nPOS Tags:\n", pos_tags)
+
+# TF-IDF
+documents = [
+    "Machine learning is fun",
+    "Machine learning improves prediction"
+]
+
+vectorizer = TfidfVectorizer()
+
+X = vectorizer.fit_transform(documents)
+
+print("\nTF-IDF Matrix:\n")
+print(X.toarray())
