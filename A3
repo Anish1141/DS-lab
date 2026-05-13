@@ -1,3 +1,4 @@
+#3
 import pandas as pd
 import seaborn as sns
 
@@ -9,27 +10,23 @@ grouped = df.groupby('species')['sepal_length'].describe()
 print("\nSpecies-wise:\n", grouped)
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-###3
+#3
 import pandas as pd
-import numpy as np
+import seaborn as sns
 
-df = pd.read_csv(r"C:\Users\Hp\Downloads\data.csv")
-df.head()
+# Load Iris dataset
+df = sns.load_dataset('iris')
 
-grouped = df.groupby('Pulse')['Maxpulse']
-summary = grouped.agg(['mean', 'median', 'min', 'max', 'std'])
-print(summary)
-calories_list = df.groupby('Pulse') ['Maxpulse'].apply(list)
-print(calories_list)
+# Display first 5 rows
+print("First 5 Rows:\n")
+print(df.head())
 
-df = pd.read_csv(r"C:\Users\Hp\OneDrive\Desktop\VS code\Iris11.csv")
-df.head()
+# Overall summary statistics
+print("\nOverall Summary Statistics:\n")
+print(df.describe())
 
-grouped = df.groupby('Species')
-summary = grouped[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']].agg(['mean', 'median', 'min', 'max', 'std'])
-print(summary)
+# Species-wise statistics
+print("\nSpecies-wise Summary Statistics:\n")
+grouped = df.groupby('species').describe()
 
-print("Mean :\n", grouped.mean())
-print("\nStandard Deviation :\n", grouped.std())
-print("\n Percentiles :\n", grouped.quantile([0.25, 0.50, 0.75]))
+print(grouped)
