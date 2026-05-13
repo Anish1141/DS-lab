@@ -54,5 +54,108 @@ print("Error Rate =", error_rate)
 print("Precision =", precision)
 print("Recall =", recall)
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+This program uses the Naive Bayes Algorithm to classify the Iris flower dataset into:
 
+Setosa = 1
+Other flowers = 0
+Short Explanation of Code
+1. Import Libraries
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix
+pandas → data handling
+seaborn → load iris dataset
+train_test_split → split data into training/testing
+GaussianNB → Naive Bayes model
+confusion_matrix → evaluate model performance
+2. Load Dataset
+df = sns.load_dataset('iris')
+
+Loads the Iris flower dataset.
+
+print(df.head())
+
+Displays first 5 rows.
+
+3. Convert into Binary Classification
+df['species'] = df['species'].apply(
+    lambda x: 1 if x == 'setosa' else 0
+)
+
+Converts:
+
+setosa → 1
+versicolor & virginica → 0
+
+This makes it a binary classification problem.
+
+4. Define Features and Target
+X = df.drop('species', axis=1)
+y = df['species']
+X → input features
+(sepal length, sepal width, petal length, petal width)
+y → output/target column (species)
+5. Split Dataset
+train_test_split(...)
+
+Splits data into:
+
+80% Training Data
+20% Testing Data
+
+random_state=42 gives same results every time.
+
+6. Train Naive Bayes Model
+model = GaussianNB()
+model.fit(X_train, y_train)
+Creates Gaussian Naive Bayes model
+Trains model using training data
+7. Prediction
+y_pred = model.predict(X_test)
+
+Predicts flower class for test data.
+
+8. Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+Used to evaluate classification performance.
+
+Matrix contains:
+
+Value	Meaning
+TN	Correctly predicted 0
+FP	Incorrectly predicted 1
+FN	Incorrectly predicted 0
+TP	Correctly predicted 1
+TN, FP, FN, TP = cm.ravel()
+
+Extracts all 4 values.
+
+9. Performance Metrics
+Accuracy
+accuracy = (TP + TN) / cm.sum()
+
+Percentage of correct predictions.
+
+Error Rate
+error_rate = (FP + FN) / cm.sum()
+
+Percentage of wrong predictions.
+
+Precision
+precision = TP / (TP + FP)
+
+How many predicted positives are actually correct.
+
+Recall
+recall = TP / (TP + FN)
+
+How many actual positives are correctly identified.
+
+Final Short Conclusion (For Exam)
+
+“This program performs binary classification on the Iris dataset using the Gaussian Naive Bayes algorithm. It trains the model, predicts test data, 
+generates a confusion matrix, and calculates accuracy, error rate, precision, and recall to evaluate performance.”
 
