@@ -1,0 +1,48 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\anish\OneDrive\Desktop\covid-data-analysis\covid_vaccine_statewise.csv")
+df = df[df['State']!= 'India']
+print(df.columns)
+
+
+
+
+first_dose = df.groupby('State')['First Dose Administered'].max()
+first_dose = first_dose.sort_values(ascending=False).head(10)
+
+plt.figure(figsize=(10,5))
+first_dose.plot(kind ='bar')
+
+plt.title("Top 10 State-Doses Administered")
+plt.xlabel("States")
+plt.ylabel("First Dose")
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+second_dose = df.groupby('State')['Second Dose Administered'].max()
+second_dose = second_dose.sort_values(ascending=False).head(10)
+
+plt.figure(figsize=(10,5))
+second_dose.plot(kind='bar')
+
+plt.title("Top 10 State- Second Dose Administerd")
+plt.xlabel("States")
+plt.ylabel("Second Dose")
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+male = pd.to_numeric(df['Male (Doses Administered)'], errors='coerce').max()
+female = pd.to_numeric(df['Female (Doses Administered)'], errors='coerce').max()
+
+
+plt.figure(figsize=(6,6))
+plt.pie([male, female],
+       labels = ['Male', 'Female'],
+       autopct = '%1.1f%%')
+plt.title("Males Vs Female")
+plt.show()
+
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
