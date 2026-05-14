@@ -68,6 +68,16 @@ Trends
 Distribution
 Relationships
 before machine learning.
+xxxx
+Mean sum(x) / n | df.mean() Average value
+Median Middle value | df.median() Central value, not affected by outliers
+Mode Most frequent | df.mode() Most common value
+Mid-range (max + min) / 2 Average of extremes
+Variance sum((x-mean)^2)/n | df.var() Spread of data
+Std Deviation sqrt(variance) | df.std() Average distance from mean
+Range max - min | df.max()-df.min() Total spread
+Percentile np.percentile(df,25) Value below which X% falls
+xxx
 
 What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
 FN. It helps evaluate classifier performance.
