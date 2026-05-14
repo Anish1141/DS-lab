@@ -92,6 +92,16 @@ DataFrame → Table-like data structure in Pandas.
 Feature Types → Datatypes of columns.
 Outlier → Value far from normal range.
 IQR → Q3 − Q1, used for outlier detection.
+xxxx
+Assignments 8, 9, 10 — Data Visualization
+Dataset: Titanic (8, 9) and Iris (10) | Libraries: Seaborn, Matplotlib
+Plot Type When to Use Code
+Histogram Distribution of single numeric variable plt.hist(df['fare'], bins=20)
+Box Plot Show quartiles, median, outliers sns.boxplot(x='sex', y='age', data=df)
+Scatter Plot Relationship between 2 variables plt.scatter(df['x'], df['y'])
+Bar Plot Compare categories sns.barplot(x='class', y='fare', data=df)
+Heatmap Correlation matrix sns.heatmap(df.corr(), annot=True)
+Line Plot Trends over time plt.plot(df['year'], df['value'])
 xxx
 What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
 FN. It helps evaluate classifier performance.
