@@ -43,6 +43,9 @@ print("R2 Score:", r2_score(y_test, y_pred))
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 This program uses Linear Regression to predict house prices using the Boston Housing dataset.
 
+hat is Linear Regression?
+Linear Regression finds the best-fit straight line through data points to predict a continuous output variable from
+one or more input features.
 Step-by-step Explanation
 Import Libraries
 pandas → used to handle dataset
