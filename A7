@@ -116,6 +116,16 @@ NLTK: Python library used for NLP tasks.
 TfidfVectorizer: Converts text into numerical vectors.
 WordNetLemmatizer: Used for lemmatization process.
 PorterStemmer: Used for stemming words.
+xxxx
+Assignment 7 — Text Analytics / NLP
+Steps: Tokenization → POS Tagging → Stop Words Removal → Stemming → Lemmatization → TF-IDF
+Step What it Does Library / Code
+Tokenization Split text into words/sentences nltk.word_tokenize(text)
+POS Tagging Label each word: Noun, Verb, Adj... nltk.pos_tag(tokens)
+Stop Words Remove common words: 'the','is','and' stopwords.words('english')
+Stemming Reduce to root form (running→run) PorterStemmer().stem(word)
+Lemmatization Reduce to dictionary base (better→good) WordNetLemmatizer().lemmatize(w)
+TF-IDF Word importance in document TfidfVectorizer().fit_transform(docs)
 xxx
 What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
 FN. It helps evaluate classifier performance.
