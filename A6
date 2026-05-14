@@ -198,6 +198,12 @@ Recall → Actual positives identified
 Advantage → Fast and simple
 Disadvantage → Assumes feature independence
 xxxx
+Assignment 6 — Naïve Bayes Classification
+Dataset: Iris.csv — Classify flower species.
+What is Naïve Bayes?
+A probabilistic classifier based on Bayes' Theorem, assuming all features are independent (the 'naïve'
+assumption).
+xxxx
 What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
 FN. It helps evaluate classifier performance.
 Q: What is TP, TN, FP, FN? A: TP = Model said Yes, was Yes. TN = Model said No, was No. FP = Model
