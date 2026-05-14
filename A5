@@ -180,6 +180,12 @@ Error Rate=FP+FNTP+TN+FP+FNError\ Rate = \frac{FP+FN}{TP+TN+FP+FN}Error Rate=TP+
 F1-Score: Balance between Precision and Recall.
 F1 Score=2×Precision×RecallPrecision+RecallF1\ Score = \frac{2 \times Precision \times Recall}{Precision + Recall}F1 Score=Precision+Recall2×Precision×Recall​
 Importance of Confusion Matrix: Helps calculate performance metrics and analyze prediction errors.
+xxxx
+Assignment 5 — Logistic Regression + Confusion Matrix
+Dataset: Social_Network_Ads.csv — Predict if user buys product (0 or 1).
+What is Logistic Regression?
+Despite the name, it is used for classification (not regression). It predicts the probability of a binary outcome (0
+or 1) using the sigmoid function
 xxx
 
 What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
