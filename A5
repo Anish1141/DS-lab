@@ -180,5 +180,66 @@ Error Rate=FP+FNTP+TN+FP+FNError\ Rate = \frac{FP+FN}{TP+TN+FP+FN}Error Rate=TP+
 F1-Score: Balance between Precision and Recall.
 F1 Score=2×Precision×RecallPrecision+RecallF1\ Score = \frac{2 \times Precision \times Recall}{Precision + Recall}F1 Score=Precision+Recall2×Precision×Recall​
 Importance of Confusion Matrix: Helps calculate performance metrics and analyze prediction errors.
+xxx
 
-
+What is a confusion matrix? A: A table comparing actual vs predicted labels. It has 4 values: TP, TN, FP,
+FN. It helps evaluate classifier performance.
+Q: What is TP, TN, FP, FN? A: TP = Model said Yes, was Yes. TN = Model said No, was No. FP = Model
+said Yes, was No (Type I Error). FN = Model said No, was Yes (Type II
+Error).
+Q: Difference between
+Precision and Recall?
+A: Precision = TP/(TP+FP) — of all predicted positives, how many are
+correct. Recall = TP/(TP+FN) — of all actual positives, how many did we
+find.
+Q: When to use F1 vs F2 score? A: F1 when Precision and Recall are equally important. F2 when Recall is
+twice as important (e.g., medical diagnosis where missing a disease is worse
+than false alarm).
+Q: What is an outlier? How do
+you detect it?
+A: Data point far from others. Detect using IQR: anything below Q1-1.5*IQR
+or above Q3+1.5*IQR. Also by Z-score (|z|>3) or visually via box plot.
+Q: Difference between Linear
+and Logistic Regression?
+A: Linear Regression predicts continuous values (house price). Logistic
+Regression predicts binary/categorical outcomes (spam or not) using
+sigmoid function.
+Q: What is the 'naive'
+assumption in Naïve Bayes?
+A: All features are conditionally independent given the class. In reality
+features may be correlated, but the algorithm works well despite this
+assumption.
+Q: What is K-Means? How to
+choose K?
+A: Unsupervised clustering algorithm. K = number of clusters. Choose K
+using Elbow Plot — pick K where inertia curve bends.
+Q: What is TF-IDF? A: Term Frequency-Inverse Document Frequency. TF = how often word
+appears in doc. IDF = log(total docs / docs containing word). Words common
+in all docs get low weight.
+Q: Difference between
+stemming and lemmatization?
+A: Stemming crudely chops word endings (running→run). Lemmatization
+uses dictionary to get base form (better→good). Lemmatization is more
+accurate.
+Q: What is AUC-ROC? A: ROC curve plots TPR vs FPR. AUC is the area — 1.0 = perfect, 0.5 =
+random. Used to compare models regardless of threshold.
+Q: What is data normalization?
+Types?
+A: Scaling features to a common range. Min-Max: scales to [0,1]. Standard
+(Z-score): mean=0, std=1. Done to prevent features with large values
+dominating the model.
+Q: What is the Data Analytics
+Lifecycle?
+A: Phase 1: Discovery → Phase 2: Data Preparation → Phase 3: Model
+Planning → Phase 4: Model Building → Phase 5: Communication → Phase
+6: Operationalize
+What libraries are used in
+Data Science with Python?
+A: pandas (data manipulation), numpy (numerical), matplotlib/seaborn
+(visualization), sklearn (ML models), nltk (NLP), scipy (statistics)
+Q: What is the difference
+between supervised and
+unsupervised learning?
+A: Supervised: model trained with labelled data (e.g., Linear Regression,
+Naïve Bayes, SVM). Unsupervised: no labels, finds patterns (e.g., K-Means,
+Hierarchical Clustering).
